@@ -43,7 +43,7 @@ def test_fontspec_rejects_invalid_extension(tmp_path: Path, ext: str) -> None:
         FontSpec(name="dummy name", file_path=font_file)
 
 
-def test_expanduser_and_resolve(tmp_path: Path, monkeypatch) -> None:
+def test_expanduser_and_resolve(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """~ in path should expand to home directory and resolve to absolute."""
     fake_home = tmp_path / "home"
     fake_home.mkdir()
