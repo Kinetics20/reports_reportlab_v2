@@ -70,7 +70,7 @@ def make_styles(
     - ``alignment`` must be one of ``TA_LEFT``, ``TA_RIGHT``, ``TA_CENTER``, ``TA_JUSTIFY``.
     """
     styles_in = base if base else getSampleStyleSheet()
-    styles = _clone_stylesheet(styles_in)
+    styles = styles_in
 
     if not overrides:
         return styles
@@ -95,6 +95,13 @@ def make_styles(
         _apply_style_overrides(style, attrs)
 
     return styles
+
+
+def _clone_stylesheet(ss: StyleSheet1) -> StyleSheet1:
+    """Deep-clone a StyleSheet1, preserving byName registry."""
+    clone: StyleSheet1 = copy.deepcopy(ss)
+    assert isinstance(clone.byName, MutableMapping)  # noqa: S101
+    return clone
 
 
 def _apply_style_overrides(style: ParagraphStyle, attrs: Mapping[str, object]) -> None:
@@ -139,10 +146,3 @@ def _normalize_value(key: str, value: object) -> object:
         except Exception:
             return value
     return value
-
-
-def _clone_stylesheet(ss: StyleSheet1) -> StyleSheet1:
-    """Deep-clone a StyleSheet1, preserving byName registry."""
-    clone: StyleSheet1 = copy.deepcopy(ss)
-    assert isinstance(clone.byName, MutableMapping)  # noqa: S101
-    return clone
