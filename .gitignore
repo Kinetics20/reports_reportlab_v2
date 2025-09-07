@@ -11,3 +11,4 @@ wheels/
 assets/*.pdf
 .coverage
 *.xml
+.idea

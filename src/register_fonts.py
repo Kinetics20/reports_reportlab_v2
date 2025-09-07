@@ -6,7 +6,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from src.fontspec import FontSpec
 
 
-def register_fonts(fonts: list[FontSpec], *, logger: logging.Logger | None) -> None:
+def register_fonts(fonts: list[FontSpec], *, logger: logging.Logger | None = None) -> None:
     """Register TrueType/OpenType fonts in ReportLab safely and idempotently.
 
     This function:
@@ -50,4 +50,4 @@ def register_fonts(fonts: list[FontSpec], *, logger: logging.Logger | None) -> N
             log.error(f"Failed to register font {spec.name}, {spec.file_path}")
             continue
 
-        pdfmetrics.registerFont(TTFont(spec.name, spec.file_path.as_posix()))
+        log.info("Successfully registered font: %s (%s)", spec.name, spec.file_path)
