@@ -1,4 +1,5 @@
 import logging
+from collections.abc import Sequence
 
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -6,7 +7,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from src.fontspec import FontSpec
 
 
-def register_fonts(fonts: list[FontSpec], *, logger: logging.Logger | None = None) -> None:
+def register_fonts(fonts: Sequence[FontSpec], *, logger: logging.Logger | None = None) -> None:
     """Register TrueType/OpenType fonts in ReportLab safely and idempotently.
 
     This function:
