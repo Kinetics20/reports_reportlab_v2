@@ -9,6 +9,8 @@ wheels/
 # Virtual environments
 .venv
 assets/*.pdf
+images/*.jpg
+fonts/*.ttf
 .coverage
 *.xml
 .idea
