@@ -1,7 +1,9 @@
 [project]
 name = "reports-reportlab-v2"
 version = "0.1.0"
-description = "Add your description here"
+description = "A practice project demonstrating PDF generation with ReportLab, including custom fonts, styles, and images."
+authors = ["Piotr Lipinski <kinetics20@gmail.com>"]
+license = "Beerware"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
